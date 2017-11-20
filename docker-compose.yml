@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+
+  api_1:
+    image: ambientum/node
+    container_name: test-api-1
+    volumes:
+      - ./api_1:/www
+    ports:
+      - "3000:3000"
+    working_dir: /www
+    command: ["yarn", "dev"]
+
+  api_2:
+    image: ambientum/node
+    container_name: test-api-2
+    volumes:
+      - ./api_2:/www
+    ports:
+      - "4000:4000"
+    working_dir: /www
+    command: ["yarn", "dev"]
