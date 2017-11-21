@@ -2,7 +2,7 @@ import express from 'express'
 import jwt from 'jsonwebtoken'
 import middlewares from './middlewares'
 import router from './routes/index'
-import { default as Controller } from './controller'
+import { default as IndexController } from './controller'
 
 const app = express()
 
@@ -14,7 +14,10 @@ middlewares(app)
 
 /* ROUTES */
 
-app.get('/', (...args) => Controller.index(...args))
+app
+  .get('/', async (...args) => IndexController.all(...args))
+  .get('/:id', async (...args) => IndexController.get(...args))
+  .post('/', async (...args) => IndexController.create(...args))
 
 app.post('/auth', async (req, res) => {
   try {

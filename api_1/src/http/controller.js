@@ -1,7 +1,5 @@
-class Controller {
-  async index (req, res, next) {
-    res.json('teste de ...args')
-  }
-}
+import { BaseController } from './baseController'
 
-export default new Controller()
+class IndexController extends BaseController {}
+
+export default new IndexController()
