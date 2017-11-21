@@ -2,6 +2,7 @@ import express from 'express'
 import jwt from 'jsonwebtoken'
 import middlewares from './middlewares'
 import router from './routes/index'
+import { default as Controller } from './controller'
 
 const app = express()
 
@@ -12,6 +13,8 @@ const secret = 'dz'
 middlewares(app)
 
 /* ROUTES */
+
+app.get('/', (...args) => Controller.index(...args))
 
 app.post('/auth', async (req, res) => {
   try {
